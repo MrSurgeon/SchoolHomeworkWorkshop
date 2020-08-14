@@ -1,0 +1,47 @@
+﻿@model RoleListViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>RoleList</title>
+</head>
+<body>
+    <form asp-route-area="AdminAuthorities" asp-controller="Role" asp-action="RoleList" method="post">
+        <div>
+            <a asp-route-area="AdminAuthorities" asp-controller="Role" asp-action="RoleAdd">Add The Role</a>
+        </div>
+        <div>
+            <input type="text" placeholder="Search" asp-for="Key" /><br />
+            <input type="submit" value="Search" />
+        </div>
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Role Name</th>
+                <th>Operations</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Roles)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Name</td>
+                    <td>
+                        <a asp-route-area="AdminAuthorities" asp-controller="Role" asp-action="RoleEdit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-route-area="AdminAuthorities" asp-controller="Role" asp-action="RoleDetails" asp-route-id="@item.Id">Details</a> |
+                        <a asp-route-area="AdminAuthorities" asp-controller="Role" asp-action="RoleDelete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>

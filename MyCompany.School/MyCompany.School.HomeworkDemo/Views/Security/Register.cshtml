@@ -1,0 +1,15 @@
+﻿@model MyCompany.School.HomeworkDemo.Models.Security.RegisterViewModel
+
+
+    <h1>Register İşlemleri</h1>
+    <form asp-controller="Security" asp-action="Register">
+
+        <div asp-validation-summary="All"></div><br />
+        <input type="text" asp-for="UserName" placeholder="User Name" /><br />
+        <input type="text" asp-for="Password" placeholder="Password" /><br />
+        <input type="text" asp-for="ConfirmedPassword" placeholder="Confirm Password" /><br />
+        <input type="text" asp-for="Email" placeholder="Email" /><br />
+        <input type="text" asp-for="Age" placeholder="Age" /><br />
+        <input type="submit" value="Register"/>
+    </form>
+

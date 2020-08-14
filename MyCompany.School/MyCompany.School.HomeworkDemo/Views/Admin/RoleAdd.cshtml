@@ -1,0 +1,25 @@
+﻿@model AdminRoleAddModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>RoleAdd</title>
+</head>
+<body>
+    <form asp-controller="Admin" asp-action="RoleAdd" method="post">
+        <div asp-validation-summary="All"></div>
+        <div>
+            <label asp-for="Role.Name"></label>
+            <input type="text" asp-for="Role.Name" />
+        </div>
+        <div>
+            <input type="submit" value="Add"/>
+        </div>
+    </form>
+</body>
+</html>

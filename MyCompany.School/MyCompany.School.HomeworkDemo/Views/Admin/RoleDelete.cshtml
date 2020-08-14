@@ -1,0 +1,33 @@
+﻿@model AdminRoleAddModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>RoleDelete</title>
+</head>
+<body>
+    <form asp-controller="Admin" asp-action="RoleDelete">
+        <div asp-validation-summary="All"></div>
+        <div>
+            <input type="hidden" asp-for="Role.Id" />
+            <label>@Html.DisplayNameFor(a => a.Role.Id)</label>
+            <label>@Html.DisplayFor(a => a.Role.Id)</label>
+        </div>
+        <div>
+            <input type="hidden" asp-for="Role.Name" />
+            <label>@Html.DisplayNameFor(a => a.Role.Name)</label>
+            <label>@Html.DisplayFor(a => a.Role.Name)</label>
+            <input type="hidden" asp-for="Role.ConcurrencyStamp" />
+        </div>
+        <div>
+            <input type="submit" value="Delete" />
+        </div>
+        |<a asp-controller="Admin" asp-action="Index">Index Page</a>
+    </form>
+</body>
+</html>

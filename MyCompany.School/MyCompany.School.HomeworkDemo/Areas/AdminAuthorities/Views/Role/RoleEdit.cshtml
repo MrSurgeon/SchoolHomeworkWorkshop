@@ -1,0 +1,30 @@
+﻿@model AdminRoleAddModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>RoleEdit</title>
+</head>
+<body>
+    <form asp-route-area="AdminAuthorities" asp-controller="Role" asp-action="RoleEdit" method="post">
+        <div>
+            <label>Id:</label>@Model.Role.Id
+            <input type="hidden" asp-for="Role.Id" />
+        </div>
+        <div>
+            <label>RoleName:</label>
+            <input type="text" asp-for="Role.Name" />
+            <input type="hidden" asp-for="Role.ConcurrencyStamp" />
+        </div>
+        <input type="submit" value="Update" />
+        <div>
+            <a asp-route-area="AdminAuthorities" asp-controller="Role" asp-action="RoleList" >Back to Role List</a>
+        </div>
+    </form>
+</body>
+</html>

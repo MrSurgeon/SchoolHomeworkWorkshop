@@ -1,0 +1,29 @@
+﻿@model PersonAddModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Add</title>
+</head>
+<body>
+    <form asp-route-area="AdminAuthorities" asp-controller="Person" asp-action="Add" method="post">
+        <div asp-validation-summary="All"></div>
+        <div>
+            <label asp-for="Person.Name"></label>
+            <input type="text" asp-for="Person.Name" />
+        </div>
+        <div>
+            <label asp-for="Person.Surname"></label>
+            <input type="text" asp-for="Person.Surname" />
+        </div>
+        <div>
+            <input type="submit" value="Add" />
+        </div>
+    </form>
+</body>
+</html>

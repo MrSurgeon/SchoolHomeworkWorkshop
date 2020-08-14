@@ -1,0 +1,36 @@
+﻿@model PersonAddModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <form asp-route-area="AdminAuthorities" asp-controller="Person" asp-action="Details">
+        <div>
+            <label>@Html.DisplayNameFor(a => a.Person.Id)</label>
+            <label>@Html.DisplayFor(a => a.Person.Id)</label>
+        </div>
+        <div>
+            <label>@Html.DisplayNameFor(a => a.Person.Name)</label>
+            <label>@Html.DisplayFor(a => a.Person.Name)</label>
+        </div>
+        <div>
+            <label>@Html.DisplayNameFor(a => a.Person.Surname)</label>
+            <label>@Html.DisplayFor(a => a.Person.Surname)</label>
+        </div>
+        <div>
+            <label>@Html.DisplayNameFor(a => a.Person.IsPersonActive)</label>
+            <label>@Html.DisplayFor(a => a.Person.IsPersonActive)</label>
+        </div>
+        <div>
+            <a asp-route-area="AdminAuthorities" asp-controller="Person" asp-action="List">Back to Person List</a>
+        </div>
+    </form>
+</body>
+</html>
