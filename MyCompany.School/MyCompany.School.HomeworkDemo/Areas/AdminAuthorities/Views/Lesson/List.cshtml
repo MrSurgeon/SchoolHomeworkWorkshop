@@ -1,4 +1,4 @@
-﻿
+﻿@model MyCompany.School.HomeworkDemo.Areas.AdminAuthorities.Models.LessonModels.LessonListViewModel
 @{
     Layout = null;
 }
@@ -10,38 +10,34 @@
     <title>List</title>
 </head>
 <body>
-    @*<form asp-route-area="AdminAuthorities" asp-controller="Lesson" asp-action="Search" method="post">
+    <form asp-route-area="AdminAuthorities" asp-controller="Lesson" asp-action="Search" method="post">
             <div>
-                <a asp-action="Add">Add The Role</a>
+                <a asp-action="Add">Add The Lesson</a>
             </div>
             <div>
                 <input type="text" placeholder="Search" asp-for="Key" /><br />
                 <input type="submit" value="Search" />
             </div>
-        </form>*@
+        </form>
 
     <table>
         <thead>
             <tr>
                 <th>Id</th>
                 <th>Name</th>
-                <th>Surname</th>
-                <th>IsPersonActive</th>
                 <th>Operations</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var entity in Model.People)
+            @foreach (var entity in Model.Lessons)
             {
                 <tr>
                     <td>@entity.Id</td>
                     <td>@entity.Name</td>
-                    <td>@entity.Surname</td>
-                    <td>@entity.IsPersonActive</td>
                     <td>
-                        <a asp-route-area="AdminAuthorities" asp-controller="Person" asp-action="Edit" asp-route-id="@entity.Id">Edit</a> |
-                        <a asp-route-area="AdminAuthorities" asp-controller="Person" asp-action="Details" asp-route-id="@entity.Id">Details</a> |
-                        <a asp-route-area="AdminAuthorities" asp-controller="Person" asp-action="Delete" asp-route-id="@entity.Id">Delete</a>
+                        <a asp-route-area="AdminAuthorities" asp-controller="Lesson" asp-action="Edit" asp-route-id="@entity.Id">Edit</a> |
+                        <a asp-route-area="AdminAuthorities" asp-controller="Lesson" asp-action="Details" asp-route-id="@entity.Id">Details</a> |
+                        <a asp-route-area="AdminAuthorities" asp-controller="Lesson" asp-action="Delete" asp-route-id="@entity.Id">Delete</a>
                     </td>
                 </tr>
             }

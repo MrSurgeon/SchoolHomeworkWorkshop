@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -7,12 +6,12 @@ using Microsoft.EntityFrameworkCore;
 using MyCompany.School.HomeworkDemo.Areas.AdminAuthorities.Models.LessonModels;
 using MyCompany.School.HomeworkDemo.Data;
 
-namespace MyCompany.School.HomeworkDemo.Areas.Admins.Controllers
+namespace MyCompany.School.HomeworkDemo.Areas.AdminAuthorities.Controllers
 {
     [Area("AdminAuthorities")]
     public class LessonController : Controller
     {
-        private SchoolDataDbContext _schoolDataDbContext;
+        private readonly SchoolDataDbContext _schoolDataDbContext;
 
         public LessonController(SchoolDataDbContext schoolDataDbContext)
         {
@@ -72,7 +71,7 @@ namespace MyCompany.School.HomeworkDemo.Areas.Admins.Controllers
 
         // POST: Lesson Add
         [HttpPost]
-        public async Task<IActionResult> Add([Bind("")] LessonManagerModel lessonAddModel)
+        public async Task<IActionResult> Add([Bind("Name")] LessonManagerModel lessonAddModel)
         {
             if (!ModelState.IsValid)
             {
@@ -215,12 +214,13 @@ namespace MyCompany.School.HomeworkDemo.Areas.Admins.Controllers
             return RedirectToAction("List");
         }
 
+        //Post : Search
         public async Task<IActionResult> Search(string Key)
         {
             if (string.IsNullOrEmpty(Key))
             {
                 ModelState.AddModelError(string.Empty, "Id is not unreachable");
-                return View("List", Key);
+                return View("List");
             }
 
             var requireLessons = new LessonListViewModel()
@@ -229,7 +229,7 @@ namespace MyCompany.School.HomeworkDemo.Areas.Admins.Controllers
                 //farklı tercihlere göre gerçekleştirebilmesini sağlayabiliriz.
 
                 Lessons = await (from m in _schoolDataDbContext.Lessons
-                                 where m.Name == Key
+                                 where  m.Name == Key
                                  select m
                                 ).ToListAsync()
             };

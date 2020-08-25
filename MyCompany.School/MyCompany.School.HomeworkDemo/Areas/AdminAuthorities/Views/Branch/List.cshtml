@@ -1,0 +1,48 @@
+﻿@model MyCompany.School.HomeworkDemo.Areas.AdminAuthorities.Models.BranchModels.BranchListViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>List</title>
+</head>
+<body>
+    <form asp-route-area="AdminAuthorities" asp-controller="Branch" asp-action="Search" method="post">
+        <div>
+            <a asp-action="Add">Add The Lesson</a>
+        </div>
+        <div>
+            <input type="text" placeholder="Search" asp-for="Key" /><br />
+            <input type="submit" value="Search" />
+        </div>
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Branch Name</th>
+                <th>Operations</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var entity in Model.Branches)
+            {
+                <tr>
+                    <td>@entity.Id</td>
+                    <td>@entity.BranchName</td>
+                    <td>
+                        <a asp-route-area="AdminAuthorities" asp-controller="Branch" asp-action="Edit" asp-route-id="@entity.Id">Edit</a> |
+                        <a asp-route-area="AdminAuthorities" asp-controller="Branch" asp-action="Details" asp-route-id="@entity.Id">Details</a> |
+                        <a asp-route-area="AdminAuthorities" asp-controller="Branch" asp-action="Delete" asp-route-id="@entity.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>

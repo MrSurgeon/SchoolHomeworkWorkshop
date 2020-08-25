@@ -1,0 +1,27 @@
+﻿@model MyCompany.School.HomeworkDemo.Areas.AdminAuthorities.Models.LessonModels.LessonManagerModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+</head>
+<body>
+    <form asp-route-area="AdminAuthorities" asp-controller="Lesson" asp-action="Edit" method="post">
+        <div asp-validation-summary="All"></div>
+        <div>
+            <input type="hidden" asp-for="Lesson.Id" />
+            <label asp-for="Lesson.Name"></label>
+            <input type="text" asp-for="Lesson.Name" />
+        </div>
+        <br/>
+        <div>
+            <input type="submit" value="Submit"  />
+        </div>
+    </form>
+</body>
+</html>

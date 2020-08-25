@@ -1,0 +1,33 @@
+﻿@model MyCompany.School.HomeworkDemo.Models.Homework.HomeworkManagerModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Add</title>
+</head>
+<body>
+    <form asp-controller="Homework" asp-action="Add" method="post">
+        <div asp-validation-summary="All"></div>
+        <div>
+            <label asp-for="Homework.PersonLessonId"></label>
+            <input type="text" asp-for="Homework.PersonLessonId" />
+        </div>
+        <div>
+            <label asp-for="Homework.HomeworkDescription"></label>
+            <input type="text" asp-for="Homework.HomeworkDescription" />
+        </div>
+        <div>
+            <label asp-for="Homework.LoadDate"></label>
+            <input type="text" asp-for="Homework.LoadDate"/>
+        </div>
+        <div>
+            <input type="submit" value="Add"/>
+        </div>
+    </form>
+</body>
+</html>

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace MyCompany.School.HomeworkDemo.Data
 {
-    public partial class Branchs
+    public partial class Branch
     {
-        public Branchs()
+        public Branch()
         {
             TeacherPersons = new HashSet<TeacherPersons>();
         }

@@ -1,0 +1,25 @@
+﻿@model MyCompany.School.HomeworkDemo.Areas.AdminAuthorities.Models.BranchModels.BranchManagerModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Add</title>
+</head>
+<body>
+    <form asp-route-area="AdminAuthorities" asp-controller="Branch" asp-action="Add" method="post">
+        <div asp-validation-summary="All"></div>
+        <div>
+            <label asp-for="Branch.BranchName"></label>
+            <input type="text" asp-for="Branch.BranchName" />
+        </div>
+        <div>
+            <input type="submit" value="Add" />
+        </div>
+    </form>
+</body>
+</html>

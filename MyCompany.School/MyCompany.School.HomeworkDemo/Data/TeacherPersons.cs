@@ -9,7 +9,7 @@ namespace MyCompany.School.HomeworkDemo.Data
         public int? TeacherNo { get; set; }
         public int? BranchId { get; set; }
 
-        public virtual Branchs Branch { get; set; }
+        public virtual Branch Branch { get; set; }
         public virtual Person Person { get; set; }
     }
 }

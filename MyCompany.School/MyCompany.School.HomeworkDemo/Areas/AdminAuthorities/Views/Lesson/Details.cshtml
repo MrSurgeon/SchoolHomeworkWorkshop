@@ -1,0 +1,30 @@
+﻿@model MyCompany.School.HomeworkDemo.Areas.AdminAuthorities.Models.LessonModels.LessonManagerModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <form>
+        <form asp-route-area="AdminAuthorities" asp-controller="Lesson" asp-action="Details">
+            <div>
+                <label>@Html.DisplayNameFor(a => a.Lesson.Id)</label>
+                <label>@Html.DisplayFor(a => a.Lesson.Id)</label>
+            </div>
+            <div>
+                <label>@Html.DisplayNameFor(a => a.Lesson.Name)</label>
+                <label>@Html.DisplayFor(a => a.Lesson.Name)</label>
+            </div>
+            <div>
+                <a asp-route-area="AdminAuthorities" asp-controller="Lesson" asp-action="List">Back to Lesson List</a>
+            </div>
+        </form>
+    </form>
+</body>
+</html>

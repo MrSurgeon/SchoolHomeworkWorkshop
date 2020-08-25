@@ -11,8 +11,6 @@ namespace MyCompany.School.HomeworkDemo.Data
         }
 
         public int Id { get; set; }
-        public int? HomeworkTypeId { get; set; }
-        public int? HomeworkFileId { get; set; }
         public int? PersonLessonId { get; set; }
         public string HomeworkDescription { get; set; }
         public DateTime LoadDate { get; set; }

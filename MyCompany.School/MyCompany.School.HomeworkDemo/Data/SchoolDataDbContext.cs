@@ -15,7 +15,7 @@ namespace MyCompany.School.HomeworkDemo.Data
             : base(options)
         {
         }
-        public virtual DbSet<Branchs> Branchs { get; set; }
+        public virtual DbSet<Branch> Branchs { get; set; }
         public virtual DbSet<Classes> Classes { get; set; }
         public virtual DbSet<HomeworkDescriptions> HomeworkDescriptions { get; set; }
         public virtual DbSet<HomeworkFiles> HomeworkFiles { get; set; }
@@ -40,7 +40,7 @@ namespace MyCompany.School.HomeworkDemo.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Branchs>(entity =>
+            modelBuilder.Entity<Branch>(entity =>
             {
                 entity.Property(e => e.Id).HasColumnName("id");
                 entity.Property(e => e.BranchName)

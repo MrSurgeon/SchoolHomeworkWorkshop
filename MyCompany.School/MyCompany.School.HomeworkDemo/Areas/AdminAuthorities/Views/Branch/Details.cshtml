@@ -1,0 +1,30 @@
+﻿@model MyCompany.School.HomeworkDemo.Areas.AdminAuthorities.Models.BranchModels.BranchManagerModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <form>
+        <form asp-route-area="AdminAuthorities" asp-controller="Branch" asp-action="Details">
+            <div>
+                <label>@Html.DisplayNameFor(a => a.Branch.Id)</label>
+                <label>@Html.DisplayFor(a => a.Branch.Id)</label>
+            </div>
+            <div>
+                <label>@Html.DisplayNameFor(a => a.Branch.BranchName)</label>
+                <label>@Html.DisplayFor(a => a.Branch.BranchName)</label>
+            </div>
+            <div>
+                <a asp-route-area="AdminAuthorities" asp-controller="Branch" asp-action="List">Back to Branch List</a>
+            </div>
+        </form>
+    </form>
+</body>
+</html>
