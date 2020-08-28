@@ -1,2 +1,2 @@
 # SchoolHomeworkWorkshop
-It is a homework control-based program for schools. 
+It is a control-based program which observe homework of students for schools.
