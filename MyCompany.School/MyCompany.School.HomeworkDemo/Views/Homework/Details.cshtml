@@ -1,0 +1,25 @@
+﻿@model MyCompany.School.HomeworkDemo.Models.Homework.HomeworkManagerModel
+
+    <form asp-controller="Homework" asp-action="Details">
+        <div>
+            <label>@Html.DisplayNameFor(a => a.Homework.Id)</label>
+            <label>@Html.DisplayFor(a => a.Homework.Id)</label>
+        </div>
+        <div>
+            <label>@Html.DisplayNameFor(a => a.Homework.PersonLessonId)</label>
+            <label>@Html.DisplayFor(a => a.Homework.PersonLessonId)</label>
+        </div>
+        <div>
+            <label>@Html.DisplayNameFor(a => a.Homework.HomeworkDetails)</label>
+            <label>@Html.DisplayFor(a => a.Homework.HomeworkDetails)</label>
+        </div>
+        <div>
+            <label>@Html.DisplayNameFor(a => a.Homework.LoadDate)</label>
+            <label>@Html.DisplayFor(a => a.Homework.LoadDate)</label>
+        </div>
+
+        <div>
+            <a asp-controller="Homework" asp-action="List">Back to Homework List</a>
+        </div>
+    </form>
+

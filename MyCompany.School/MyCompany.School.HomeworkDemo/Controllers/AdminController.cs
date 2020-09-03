@@ -41,9 +41,9 @@ namespace MyCompany.School.HomeworkDemo.Controllers
 
         // GET: RoleList
         [HttpPost]
-        public async Task<IActionResult> RoleList(string Key)
+        public async Task<IActionResult> RoleList(string key)
         {
-            if (Key == null)
+            if (key == null)
             {
                 ModelState.AddModelError("IdHata", "Doğru bir arama değeri girmediniz!!");
             }
@@ -52,9 +52,9 @@ namespace MyCompany.School.HomeworkDemo.Controllers
 
             var model = new RoleListViewModel()
             {
-                Roles = await _roleManager.Roles.Where(a => a.Name.Contains(Key)).ToListAsync<SchoolRole>()
+                Roles = await _roleManager.Roles.Where(a => a.Name.Contains(key)).ToListAsync<SchoolRole>()
             };
-            if (model == null)
+            if (model.Roles == null)
             {
                 ModelState.AddModelError("AnythingRoleFind", "Can't Any Find Roles");
                 return RedirectToAction("Index");
@@ -96,7 +96,7 @@ namespace MyCompany.School.HomeworkDemo.Controllers
             }
             var role = new AdminRoleAddModel() { Role = await _roleManager.FindByIdAsync(id) };
 
-            if (role == null)
+            if (role.Role == null)
             {
                 ModelState.AddModelError(String.Empty, "User Update Error! Not Found A Role");
             }
@@ -137,7 +137,7 @@ namespace MyCompany.School.HomeworkDemo.Controllers
                 Role = await _roleManager.FindByIdAsync(id)
             };
 
-            if (role == null)
+            if (role.Role == null)
             {
                 ModelState.AddModelError(string.Empty, "Can't Find Role Anything");
                 return RedirectToAction("RoleList");

@@ -7,13 +7,13 @@ namespace MyCompany.School.HomeworkDemo.Data
     {
         public PersonLessons()
         {
-            HomeworkDescriptions = new HashSet<HomeworkDescriptions>();
+            HomeworkDescriptions = new HashSet<HomeworkDescription>();
         }
         public int Id { get; set; }
         public int? PersonNo { get; set; }
         public int? LessonId { get; set; }
         public virtual Lesson Lesson { get; set; }
         public virtual Person PersonNoNavigation { get; set; }
-        public virtual ICollection<HomeworkDescriptions> HomeworkDescriptions { get; set; }
+        public virtual ICollection<HomeworkDescription> HomeworkDescriptions { get; set; }
     }
 }

@@ -1,16 +1,5 @@
 ﻿@model MyCompany.School.HomeworkDemo.Models.Homework.HomeworkManagerModel
-@{
-    Layout = null;
-}
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Edit</title>
-</head>
-<body>
     <form asp-controller="Homework" asp-action="Edit" method="post">
         <div asp-validation-summary="All"></div>
         <div>
@@ -19,8 +8,8 @@
             <input type="text" asp-for="Homework.PersonLessonId" />
         </div>
         <div>
-            <label asp-for="Homework.HomeworkDescription"></label>
-            <input type="text" asp-for="Homework.HomeworkDescription" />
+            <label asp-for="Homework.HomeworkDetails"></label>
+            <input type="text" asp-for="Homework.HomeworkDetails" />
         </div>
         <div>
             <label asp-for="Homework.LoadDate"></label>
@@ -30,5 +19,4 @@
             <input type="submit" value="Submit"/>
         </div>
     </form>
-</body>
-</html>
+

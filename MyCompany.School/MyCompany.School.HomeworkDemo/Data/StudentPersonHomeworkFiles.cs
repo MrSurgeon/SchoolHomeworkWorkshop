@@ -8,6 +8,6 @@ namespace MyCompany.School.HomeworkDemo.Data
         public int HomeworkId { get; set; }
         public int? FileId { get; set; }
 
-        public virtual StudentPersonHomeworks Homework { get; set; }
+        public virtual StudentPersonHomework Homework { get; set; }
     }
 }

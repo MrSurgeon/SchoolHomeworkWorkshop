@@ -17,7 +17,8 @@ namespace MyCompany.School.HomeworkDemo.Data
         }
         public virtual DbSet<Branch> Branchs { get; set; }
         public virtual DbSet<Classes> Classes { get; set; }
-        public virtual DbSet<HomeworkDescriptions> HomeworkDescriptions { get; set; }
+        public virtual DbSet<HomeworkDescription> HomeworkDescriptions { get; set; }
+        public virtual DbSet<Homework> Homeworks { get; set; }
         public virtual DbSet<HomeworkFiles> HomeworkFiles { get; set; }
         public virtual DbSet<HomeworkTypes> HomeworkTypes { get; set; }
         public virtual DbSet<Lesson> Lessons { get; set; }
@@ -25,7 +26,7 @@ namespace MyCompany.School.HomeworkDemo.Data
         public virtual DbSet<PersonLessons> PersonLessons { get; set; }
         public virtual DbSet<Person> Persons { get; set; }
         public virtual DbSet<StudentPersonHomeworkFiles> StudentPersonHomeworkFiles { get; set; }
-        public virtual DbSet<StudentPersonHomeworks> StudentPersonHomeworks { get; set; }
+        public virtual DbSet<StudentPersonHomework> StudentPersonHomeworks { get; set; }
         public virtual DbSet<StudentPersonNotes> StudentPersonNotes { get; set; }
         public virtual DbSet<StudentPersons> StudentPersons { get; set; }
         public virtual DbSet<TeacherPersons> TeacherPersons { get; set; }
@@ -54,9 +55,9 @@ namespace MyCompany.School.HomeworkDemo.Data
                 entity.Property(e => e.ClassName).HasMaxLength(10);
             });
 
-            modelBuilder.Entity<HomeworkDescriptions>(entity =>
+            modelBuilder.Entity<HomeworkDescription>(entity =>
             {
-                entity.Property(e => e.HomeworkDescription)
+                entity.Property(e => e.HomeworkDetails)
                     .IsRequired()
                     .HasMaxLength(200);
 
@@ -133,7 +134,7 @@ namespace MyCompany.School.HomeworkDemo.Data
                     .HasConstraintName("FK_StudentPersonHomeworkFiles_StudentPersonHomeworks");
             });
 
-            modelBuilder.Entity<StudentPersonHomeworks>(entity =>
+            modelBuilder.Entity<StudentPersonHomework>(entity =>
             {
                 entity.HasIndex(e => new { e.HomeworkId, e.StudentNo })
                     .HasName("UK_StudentPersonHomeworks_StudentNo_TLHNo")

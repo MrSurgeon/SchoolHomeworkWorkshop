@@ -12,8 +12,8 @@ namespace MyCompany.School.HomeworkDemo.Controllers
     public class SecurityController : Controller
     {
         
-        private UserManager<SchoolUser> _userManager;
-        private SignInManager<SchoolUser> _signInManager;
+        private readonly UserManager<SchoolUser> _userManager;
+        private readonly SignInManager<SchoolUser> _signInManager;
        
         public SecurityController(UserManager<SchoolUser> userManager,
             SignInManager<SchoolUser> signInManager )
@@ -128,6 +128,8 @@ namespace MyCompany.School.HomeworkDemo.Controllers
                 throw new ApplicationException("Unable to find user");
             }
             var result = await _userManager.ConfirmEmailAsync(user, HttpUtility.UrlDecode(code));
+
+            //Email Sender Eklenecek.
 
             if (result.Succeeded)
             {

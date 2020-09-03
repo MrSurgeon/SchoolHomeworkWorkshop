@@ -1,17 +1,7 @@
 ﻿@model MyCompany.School.HomeworkDemo.Models.Homework.HomeworkListViewModel
-@{
-    Layout = null;
-}
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>List</title>
-</head>
-<body>
     <form asp-route-area="AdminAuthorities" asp-controller="Branch" asp-action="Search" method="post">
+
         <div>
             <a asp-action="Add">Add The Lesson</a>
         </div>
@@ -35,19 +25,18 @@
         <tbody>
             @foreach (var entity in Model.HomeworkList)
             {
-            <tr>
-                <td>@entity.Id</td>
-                <td>@entity.PersonLessonId</td>
-                <td>@entity.HomeworkDescription</td>
-                <td>@entity.LoadDate</td>
-                <td>
-                    <a asp-controller="Homework" asp-action="Edit" asp-route-id="@entity.Id">Edit</a> |
-                    <a asp-controller="Homework" asp-action="Details" asp-route-id="@entity.Id">Details</a> |
-                    <a asp-controller="Homework" asp-action="Delete" asp-route-id="@entity.Id">Delete</a>
-                </td>
-            </tr>
+                <tr>
+                    <td>@entity.Id</td>
+                    <td>@entity.PersonLessonId</td>
+                    <td>@entity.HomeworkDetails</td>
+                    <td>@entity.LoadDate</td>
+                    <td>
+                        <a asp-controller="Homework" asp-action="Edit" asp-route-id="@entity.Id">Edit</a> |
+                        <a asp-controller="Homework" asp-action="Details" asp-route-id="@entity.Id">Details</a> |
+                        <a asp-controller="Homework" asp-action="Delete" asp-route-id="@entity.Id">Delete</a>
+                    </td>
+                </tr>
             }
         </tbody>
     </table>
-</body>
-</html>
+

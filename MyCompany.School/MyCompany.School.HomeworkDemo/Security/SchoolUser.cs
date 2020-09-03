@@ -9,7 +9,7 @@ namespace MyCompany.School.HomeworkDemo.Security
 {
     public class SchoolUser : IdentityUser
     {
-        public int PersonId { get; set; }
+        //public int PersonId { get; set; }
 
     }
 }

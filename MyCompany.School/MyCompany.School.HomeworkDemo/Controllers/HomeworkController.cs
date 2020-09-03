@@ -12,7 +12,7 @@ using MyCompany.School.HomeworkDemo.Models.Homework;
 
 namespace MyCompany.School.HomeworkDemo.Controllers
 {
-    
+
     public class HomeworkController : Controller
     {
         private readonly SchoolDataDbContext _schoolDataDbContext;
@@ -76,7 +76,7 @@ namespace MyCompany.School.HomeworkDemo.Controllers
             {
                 Homework = await _schoolDataDbContext.HomeworkDescriptions.FirstOrDefaultAsync(s => s.Id == int.Parse(id))
             };
-            if (homework == default)
+            if (homework.Homework == default)
             {
                 ModelState.AddModelError(string.Empty, "Homework isn't found !!");
                 return View("List");
@@ -91,7 +91,7 @@ namespace MyCompany.School.HomeworkDemo.Controllers
             {
                 Homework = await _schoolDataDbContext.HomeworkDescriptions.FirstOrDefaultAsync(s => s.Id == int.Parse(id))
             };
-            if (homework == default)
+            if (homework.Homework == default)
             {
                 ModelState.AddModelError(string.Empty, "Homework isn't found !!");
                 return View("List");
@@ -110,7 +110,7 @@ namespace MyCompany.School.HomeworkDemo.Controllers
 
             var result = new HomeworkListViewModel()
             {
-                HomeworkList = await _schoolDataDbContext.HomeworkDescriptions.Where(s => s.HomeworkDescription.Contains(key)).ToListAsync()
+                HomeworkList = await _schoolDataDbContext.HomeworkDescriptions.Where(s => s.HomeworkDetails.Contains(key)).ToListAsync()
             };
 
             if (result == null)
@@ -121,8 +121,8 @@ namespace MyCompany.School.HomeworkDemo.Controllers
 
             return View("List", result);
         }
-        [HttpPost]
         // POST: Homework Add
+        [HttpPost]
         public async Task<IActionResult> Add(HomeworkManagerModel homeworkManagerModel)
         {
             if (!ModelState.IsValid)
@@ -145,14 +145,21 @@ namespace MyCompany.School.HomeworkDemo.Controllers
 
             return RedirectToAction("List");
         }
+        // POST: Homework Edit
         [HttpPost]
-        public async Task<IActionResult> Edit([Bind("")] HomeworkManagerModel homeworkManagerModel)
+        public async Task<IActionResult> Edit(int? id, [Bind("")] HomeworkManagerModel homeworkManagerModel)
         {
             if (!ModelState.IsValid)
             {
                 ModelState.AddModelError(string.Empty, "Model is not valid !!");
                 return View(homeworkManagerModel);
             }
+            if (id != homeworkManagerModel.Homework.Id)
+            {
+                ModelState.AddModelError(string.Empty, "Id is not equal to required information");
+                return View("List");
+            }
+
             try
             {
                 _schoolDataDbContext.HomeworkDescriptions.Update(homeworkManagerModel.Homework);
@@ -166,7 +173,7 @@ namespace MyCompany.School.HomeworkDemo.Controllers
             }
             return RedirectToAction("List");
         }
-
+        // POST: Homework Delete
         [HttpPost]
         public async Task<IActionResult> Delete(int? id)
         {
@@ -179,11 +186,11 @@ namespace MyCompany.School.HomeworkDemo.Controllers
             try
             {
                 _schoolDataDbContext.HomeworkDescriptions.Remove
-                (
-                                await (from m in _schoolDataDbContext.HomeworkDescriptions
-                                       where m.Id == id
-                                       select m)
-                                    .FirstOrDefaultAsync());
+               (
+                               await (from m in _schoolDataDbContext.HomeworkDescriptions
+                                      where m.Id == id
+                                      select m)
+                                   .FirstOrDefaultAsync());
                 await _schoolDataDbContext.SaveChangesAsync();
             }
             catch (Exception e)

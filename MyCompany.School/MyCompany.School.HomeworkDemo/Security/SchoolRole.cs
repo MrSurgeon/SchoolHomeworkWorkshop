@@ -8,6 +8,6 @@ using System.Threading.Tasks;
 namespace MyCompany.School.HomeworkDemo.Security
 {
     public class SchoolRole:IdentityRole
-    { 
+    {
     }
 }

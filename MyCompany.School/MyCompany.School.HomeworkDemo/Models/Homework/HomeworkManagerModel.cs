@@ -9,6 +9,6 @@ namespace MyCompany.School.HomeworkDemo.Models.Homework
 {
     public class HomeworkManagerModel
     {
-        public HomeworkDescriptions Homework { get; set; }
+        public HomeworkDescription Homework { get; set; }
     }
 }

@@ -7,7 +7,7 @@ namespace MyCompany.School.HomeworkDemo.Data
     {
         public StudentPersons()
         {
-            StudentPersonHomeworks = new HashSet<StudentPersonHomeworks>();
+            StudentPersonHomeworks = new HashSet<StudentPersonHomework>();
         }
 
         public int PersonId { get; set; }
@@ -16,6 +16,6 @@ namespace MyCompany.School.HomeworkDemo.Data
 
         public virtual Classes Class { get; set; }
         public virtual Person Person { get; set; }
-        public virtual ICollection<StudentPersonHomeworks> StudentPersonHomeworks { get; set; }
+        public virtual ICollection<StudentPersonHomework> StudentPersonHomeworks { get; set; }
     }
 }

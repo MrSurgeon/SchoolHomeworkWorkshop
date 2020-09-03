@@ -8,7 +8,7 @@ namespace MyCompany.School.HomeworkDemo.Models.Homework
 {
     public class HomeworkListViewModel
     {
-        public List<HomeworkDescriptions> HomeworkList { get; set; }
+        public List<HomeworkDescription> HomeworkList { get; set; }
 
         public string Key { get; set; }
     }
