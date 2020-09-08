@@ -1,16 +1,8 @@
 ﻿@model AdminRoleAddModel
 @{
-    Layout = null;
+    Layout = "_Layout";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>RoleDetails</title>
-</head>
-<body>
     <form asp-route-area="AdminAuthorities" asp-controller="Role" >
         <div>
             <label>@Html.DisplayNameFor(a => a.Role.Id)</label>
@@ -24,5 +16,3 @@
             <a asp-action="RoleList">Back to Role List</a>
         </div>
     </form>
-</body>
-</html>

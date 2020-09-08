@@ -21,7 +21,7 @@ namespace MyCompany.School.HomeworkDemo.Data
         [DisplayName("Person Active")]
         [BindNever]
         public bool? IsPersonActive { get; set; }
-
+        public int UserId{get; set;}
         public virtual StudentPersons StudentPersons { get; set; }
         public virtual TeacherPersons TeacherPersons { get; set; }
         public virtual ICollection<PersonLessons> PersonLessons { get; set; }

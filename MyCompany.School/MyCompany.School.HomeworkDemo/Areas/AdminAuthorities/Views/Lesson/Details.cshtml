@@ -1,16 +1,8 @@
 ﻿@model MyCompany.School.HomeworkDemo.Areas.AdminAuthorities.Models.LessonModels.LessonManagerModel
 @{
-    Layout = null;
+    Layout = "_Layout";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Details</title>
-</head>
-<body>
     <form>
         <form asp-route-area="AdminAuthorities" asp-controller="Lesson" asp-action="Details">
             <div>
@@ -26,5 +18,4 @@
             </div>
         </form>
     </form>
-</body>
-</html>
+

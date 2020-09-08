@@ -1,16 +1,8 @@
 ﻿@model RoleListViewModel
 @{
-    Layout = null;
+    Layout = "_Layout";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>RoleList</title>
-</head>
-<body>
     <form asp-route-area="AdminAuthorities" asp-controller="Role" asp-action="RoleList" method="post">
         <div>
             <a asp-route-area="AdminAuthorities" asp-controller="Role" asp-action="RoleAdd">Add The Role</a>
@@ -43,5 +35,3 @@
             }
         </tbody>
     </table>
-</body>
-</html>

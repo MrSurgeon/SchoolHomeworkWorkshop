@@ -1,16 +1,8 @@
 ﻿@model AdminRoleAddModel
 @{
-    Layout = null;
+    Layout = "_Layout";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>RoleDelete</title>
-</head>
-<body>
     <form asp-route-area="AdminAuthorities" asp-controller="Role" asp-action="RoleDelete">
         <div asp-validation-summary="All"></div>
         <div>
@@ -31,5 +23,4 @@
             <a asp-route-area="AdminAuthorities" asp-controller="Role" asp-action="RoleList">Back to Role List</a>
         </div>
     </form>
-</body>
-</html>
+

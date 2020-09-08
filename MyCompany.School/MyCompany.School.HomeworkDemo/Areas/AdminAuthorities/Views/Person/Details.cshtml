@@ -1,16 +1,8 @@
 ﻿@model PersonAddModel
 @{
-    Layout = null;
+    Layout = "_Layout";;
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Details</title>
-</head>
-<body>
     <form asp-route-area="AdminAuthorities" asp-controller="Person" asp-action="Details">
         <div>
             <label>@Html.DisplayNameFor(a => a.Person.Id)</label>
@@ -32,5 +24,4 @@
             <a asp-route-area="AdminAuthorities" asp-controller="Person" asp-action="List">Back to Person List</a>
         </div>
     </form>
-</body>
-</html>
+

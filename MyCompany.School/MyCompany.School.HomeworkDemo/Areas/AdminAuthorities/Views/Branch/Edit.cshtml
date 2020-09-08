@@ -1,16 +1,8 @@
 ﻿@model MyCompany.School.HomeworkDemo.Areas.AdminAuthorities.Models.BranchModels.BranchManagerModel 
 @{
-    Layout = null;
+    Layout = "_Layout";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Edit</title>
-</head>
-<body>
     <form asp-route-area="AdminAuthorities" asp-controller="Branch" asp-action="Edit" method="post">
         <div asp-validation-summary="All"></div>
         <div>
@@ -23,5 +15,3 @@
             <input type="submit" value="Submit" />
         </div>
     </form>
-</body>
-</html>

@@ -1,16 +1,8 @@
 ﻿@model MyCompany.School.HomeworkDemo.Areas.AdminAuthorities.Models.BranchModels.BranchListViewModel
 @{
-    Layout = null;
+    Layout = "_Layout";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>List</title>
-</head>
-<body>
     <form asp-route-area="AdminAuthorities" asp-controller="Branch" asp-action="Search" method="post">
         <div>
             <a asp-action="Add">Add The Lesson</a>
@@ -44,5 +36,3 @@
             }
         </tbody>
     </table>
-</body>
-</html>

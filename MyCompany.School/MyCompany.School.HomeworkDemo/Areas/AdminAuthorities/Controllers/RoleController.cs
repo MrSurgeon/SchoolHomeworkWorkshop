@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using MyCompany.School.HomeworkDemo.Areas.AdminAuthorities.Models.RoleModel;
 using MyCompany.School.HomeworkDemo.Security;
 
-namespace MyCompany.School.HomeworkDemo.Areas.Admins.Controllers
+namespace MyCompany.School.HomeworkDemo.Areas.AdminAuthorities.Controllers
 {
     [Area("AdminAuthorities")]
     public class RoleController : Controller

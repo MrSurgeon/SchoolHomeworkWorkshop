@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using MyCompany.School.HomeworkDemo.Areas.AdminAuthorities.Models.PersonModel;
 using MyCompany.School.HomeworkDemo.Data;
 
-namespace MyCompany.School.HomeworkDemo.Areas.Admins.Controllers
+namespace MyCompany.School.HomeworkDemo.Areas.AdminAuthorities.Controllers
 {
     [Area("AdminAuthorities")]
     public class PersonController : Controller

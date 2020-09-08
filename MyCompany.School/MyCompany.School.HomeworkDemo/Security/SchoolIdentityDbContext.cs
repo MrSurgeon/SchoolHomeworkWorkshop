@@ -8,9 +8,10 @@ using System.Threading.Tasks;
 
 namespace MyCompany.School.HomeworkDemo.Security
 {
-    public class SchoolIdentityDbContext:IdentityDbContext<SchoolUser,SchoolRole,string>
+    public class SchoolIdentityDbContext : IdentityDbContext<SchoolUser, SchoolRole, string>
     {
-        public SchoolIdentityDbContext(DbContextOptions<SchoolIdentityDbContext> options):base(options)
+        
+        public SchoolIdentityDbContext(DbContextOptions<SchoolIdentityDbContext> options) : base(options)
         {
 
         }

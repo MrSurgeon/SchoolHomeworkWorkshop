@@ -1,16 +1,8 @@
 ﻿@model AdminRoleAddModel
 @{
-    Layout = null;
+    Layout = "_Layout";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>RoleAdd</title>
-</head>
-<body>
     <form asp-route-area="AdminAuthorities" asp-controller="Role" asp-action="RoleAdd" method="post">
         <div asp-validation-summary="All"></div>
         <div>
@@ -21,5 +13,4 @@
             <input type="submit" value="Add" />
         </div>
     </form>
-</body>
-</html>
+

@@ -1,16 +1,8 @@
 ﻿@model PersonAddModel
 @{
-    Layout = null;
+    Layout = "_Layout";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Edit</title>
-</head>
-<body>
     <h2>Edit Page</h2>
     <form asp-route-area="AdminAuthorities" asp-controller="Person" asp-action="Edit" method="post">
         <div asp-validation-summary="All"></div>
@@ -27,5 +19,3 @@
             <input type="submit" value="Edit" />
         </div>
     </form>
-</body>
-</html>

@@ -6,20 +6,22 @@ using MyCompany.School.HomeworkDemo.Models.Security;
 using System;
 using System.Threading.Tasks;
 using System.Web;
+using MyCompany.School.HomeworkDemo.EmailServices;
 
 namespace MyCompany.School.HomeworkDemo.Controllers
 {
     public class SecurityController : Controller
     {
-        
+        private IEmailSender _emailSender;
         private readonly UserManager<SchoolUser> _userManager;
         private readonly SignInManager<SchoolUser> _signInManager;
-       
+
         public SecurityController(UserManager<SchoolUser> userManager,
-            SignInManager<SchoolUser> signInManager )
+            SignInManager<SchoolUser> signInManager, IEmailSender emailSender)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _emailSender = emailSender;
         }
 
         [AllowAnonymous]
@@ -39,14 +41,18 @@ namespace MyCompany.School.HomeworkDemo.Controllers
             }
 
             var user = await _userManager.FindByNameAsync(loginViewModel.UserName);
-            if (user != null)
+            if (user == null)
             {
-                if (!await _userManager.IsEmailConfirmedAsync(user))
-                {
-                    ModelState.AddModelError(string.Empty, "Confirm Your E-Mail Please");
-                    return View(loginViewModel);
-                }
+                ModelState.AddModelError(string.Empty, "Cannot Find A User !!");
+                return View(loginViewModel);
             }
+
+            if (!await _userManager.IsEmailConfirmedAsync(user))
+            {
+                ModelState.AddModelError(string.Empty, "Confirm Your E-Mail Please");
+                return View(loginViewModel);
+            }
+
             var result = await _signInManager.PasswordSignInAsync(loginViewModel.UserName, loginViewModel.Password, false, false);
 
             if (result.Succeeded)
@@ -78,7 +84,7 @@ namespace MyCompany.School.HomeworkDemo.Controllers
             return View();
         }
 
-        
+
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel registerViewModel)
         {
@@ -91,7 +97,7 @@ namespace MyCompany.School.HomeworkDemo.Controllers
             var user = new SchoolUser
             {
                 UserName = registerViewModel.UserName,
-                Email = registerViewModel.Email,
+                Email = registerViewModel.Email
             };
 
             var result = await _userManager.CreateAsync(user, registerViewModel.Password);
@@ -100,42 +106,43 @@ namespace MyCompany.School.HomeworkDemo.Controllers
             {
                 var confirmationCode = await _userManager.GenerateEmailConfirmationTokenAsync(user);
 
-                var callBackUrl = Url.Action("ConfirmEmail", "Security",
-                                            new
-                                            {
-                                                id = user.Id,
-                                                code = HttpUtility.UrlEncode(confirmationCode),
+                        var callBackUrl  = Url.Action("ConfirmEmail", "Security", new
+                        {
+                            userId = HttpUtility.UrlEncode(user.Id),
+                            code = HttpUtility.UrlEncode(confirmationCode)
+                        });
+                        
+                        await _emailSender.SendEmailAsync(user.Email,"Lütfen Mailinizi Onaylayınız.",
+                        $"Hesabınızı onaylamak için <a href='https://localhost:5001{callBackUrl}'>buraya</a> tıklayınız!");
 
-                                            }, protocol: Request.Scheme);
-                // Send-Email Codes
-
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Login");
             }
 
             return View(registerViewModel);
         }
 
-        public async Task<IActionResult> ConfirmEmail(string id, string code)
+        public async Task<IActionResult> ConfirmEmail(string userId, string code)
         {
-            if (id == null || code == null)
+            if (userId == null || code == null)
             {
                 return RedirectToAction("Index", "Home");
             }
-            var user = await _userManager.FindByIdAsync(id);
+            var user = await _userManager.FindByIdAsync(userId);
             //
-            if (user == null)
+            if (user != null)
             {
-                throw new ApplicationException("Unable to find user");
-            }
-            var result = await _userManager.ConfirmEmailAsync(user, HttpUtility.UrlDecode(code));
+                var result = await _userManager.ConfirmEmailAsync(user, HttpUtility.UrlDecode(code));
 
-            //Email Sender Eklenecek.
+                //Email Sender Eklenecek.
 
-            if (result.Succeeded)
-            {
-                return View("ConfirmEmail");
+                if (result.Succeeded)
+                {
+                    //Person Objesini Oluştur
+                    return View("ConfirmEmail");
+                }
+
             }
-            return RedirectToAction("Index", "Home");
+            throw new ApplicationException("Unable to find user");
         }
 
         public IActionResult ForgotPassword()

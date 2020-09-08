@@ -1,16 +1,8 @@
 ﻿@model PersonListViewModel
 @{
-    Layout = null;
+    Layout = "_Layout";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>List</title>
-</head>
-<body>
     <h2>Person List</h2>
 
     <form asp-route-area="AdminAuthorities" asp-controller="Person" asp-action="Search" method="post">
@@ -50,5 +42,3 @@
             }
         </tbody>
     </table>
-</body>
-</html>

@@ -1,16 +1,8 @@
 ﻿@model MyCompany.School.HomeworkDemo.Areas.AdminAuthorities.Models.BranchModels.BranchManagerModel
 @{
-    Layout = null;
+    Layout = "_Layout";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Details</title>
-</head>
-<body>
     <form asp-route-area="AdminAuthorities" asp-controller="Branch" asp-action="Details">
         <div>
             <label>@Html.DisplayNameFor(a => a.Branch.Id)</label>
@@ -24,6 +16,3 @@
             <a asp-route-area="AdminAuthorities" asp-controller="Branch" asp-action="List">Back to Branch List</a>
         </div>
     </form>
-
-</body>
-</html>
